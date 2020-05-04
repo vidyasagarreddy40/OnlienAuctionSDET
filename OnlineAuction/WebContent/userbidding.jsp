@@ -33,7 +33,25 @@
 	}
  */
 
-
+function validate()
+ {
+	 var name=document.myform.userName.value;
+	 if(name=="")
+		 {
+		 alert("Please enter the Name");
+		 document.myform.userName.foucs;
+		 return false;
+		 }
+	 
+	 var email=document.myform.email.value;
+	 if(email=="")
+		 {
+		 alert("Please enter the email");
+		 document.myform.email.foucs;
+		 return false;
+		 }
+	 
+ }
 	function showHideDiv(ele) {
 		var srcElement = document.getElementById(ele);
 		if (srcElement != null) {
@@ -71,7 +89,7 @@
 	</table>
 	<div id="divMsg"
 		style="background-color: #006969; color: #ffffff; height: 185px; width: 250px; text-align: center; display: none">
-		<form action="<%=request.getContextPath()%>/bidderServlet"
+		<form name="myform" action="<%=request.getContextPath()%>/bidderServlet"
 			method="post">
 			<table border="1">
 				<tr>
@@ -97,7 +115,7 @@
 					<td><input type="text" name="address"></td>
 				</tr>
 			</table>
-			<input type="submit" value="Bid" />
+			<input type="submit" value="Bid"  onclick="return validate()"/>
 
 		</form>
 

@@ -61,7 +61,6 @@ public class productServlet extends HttpServlet {
 		products products= new products();
 		products.setProductName(productName);
 		products.setModel(model);
-		System.out.println(products);
 		
 		
 		try {

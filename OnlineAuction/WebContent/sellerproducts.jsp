@@ -110,7 +110,7 @@
 		</form>
 		<tr>
 			<td>
-			<td><input type="button" value="Confirm" onClick="updateProductStatus()" /></td>
+			<td><input type="button" value="Close Bid" onClick="updateProductStatus()" /></td>
 			<td><%=maxBid%></td>
 			
 		</tr>

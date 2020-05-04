@@ -14,7 +14,6 @@ public class sqlconnect {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 		Connection connection=DriverManager.getConnection(url, user, password);
 		
-		System.out.println("connection is creating");
 		return connection;
 	}
 
