@@ -10,12 +10,7 @@
 </head>
 
 <script type="text/javascript">
-
-    function updateProductStatus(){
-    	
-    	var myClass= Java.type("com.sdet.training.dao.productsDao");
-    	myClass.getMaxBid();
-    }
+	
 
 	function showHideDiv(ele) {
 		var srcElement = document.getElementById(ele);
@@ -38,12 +33,9 @@
 	<div>
 
 		<%
-			productsDao dao = new productsDao();
+			productsDao dao= new productsDao();
 			String prod = dao.getProduct();
-			
-			String maxBid=dao.getMaxBid();
-			
-		
+			String maxBid = dao.getMaxBid();
 		%>
 
 
@@ -80,7 +72,7 @@
 	</div>
 
 	<div id="divDetails"
-		style="background-color: #006969; color: #ffffff; height: 400px; width: 550px; text-align: center; display: none">
+		style="background-color: #006969; color: #ffffff; height: 400px; width: 700px; text-align: center; display: none">
 		<form action="<%=request.getContextPath()%>/productServlet"
 			method="post">
 			<table align="center" cellspacing="10" border="1">
@@ -95,26 +87,36 @@
 
 				<%-- 	<input type="hidden" name="id" value="<%=id%>" />
 				<input type="hidden" name="name" value="<%=name%>" /> --%>
-				<%! int i; %>
-					<%for ( i = 0; i < 3; i++){ %>
-					
-					<tr>
+				<%!int i;%>
+				<%
+					for (i = 0; i < 3; i++) {
+				%>
+
+				<tr>
 					<td></td>
 					<td><%=dao.getbidders().get(i).getUserName()%></td>
 					<td><%=dao.getbidders().get(i).getAmount()%></td>
 					<td><%=dao.getbidders().get(i).getEmail()%></td>
-					<td><%=dao.getbidders().get(i).getPhoneNumber()%></td></tr>
-					<%}%>
+					<td><%=dao.getbidders().get(i).getPhoneNumber()%></td>
+				</tr>
+				<%
+					}
+				%>
+				<tr>
+					<td>
+					<td><input type="button" value="Close Bid" onClick="show()" /></td>
+					<td style="width:250px" id="winner"><%=maxBid%></td>
+				</tr>
 			</table>
-
 		</form>
-		<tr>
-			<td>
-			<td><input type="button" value="Close Bid" onClick="updateProductStatus()" /></td>
-			<td><%=maxBid%></td>
-			
-		</tr>
-		
 	</div>
+	<script>
+	document.getElementById("winner").style.display = 'none';
+
+	function show() {
+		console.log("in show func");
+		document.getElementById("winner").style.display = 'block';
+	}
+	</script>
 </body>
 </html>

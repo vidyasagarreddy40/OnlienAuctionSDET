@@ -154,10 +154,10 @@ public class productsDao {
 		String user="";
 	//	updateProductStatus();
 		    while(rs.next()) {
-			user = rs.getString(2);
-			user+=" "+ rs.getString(3);
-			user+=" "+ rs.getString(4);
-			user+=" "+ rs.getString(5); 
+			user = rs.getString(2)+"";
+			user+="- Amount: "+ rs.getString(3)+", ";
+			user+="-"+ rs.getString(4)+", ";
+			user+="-"+ rs.getString(5); 
 		    }
 		return user;
 	}
