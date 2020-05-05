@@ -23,6 +23,11 @@
 			return false;
 		}
 	}
+	
+	function showAlert(){
+		alert("Product is created");
+		//windows.location.href = "sellerproducts.jsp";
+		}
 </script>
 <body>
 
@@ -42,12 +47,12 @@
 		<table border="1">
 			<tr>
 				<td><label>Product Name</label></td>
-				<td><%=prod%></td>
+				<td id="productid"><%=prod%></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="Create Product"
+				<td><input id="createpid" type="button" value="Create Product"
 					onClick="showHideDiv('divCreate')" /></td>
-				<td><input type="button" value="Get Details"
+				<td><input id="getDetails" type="button" value="Get Details"
 					onClick="showHideDiv('divDetails')" /></td>
 			</tr>
 		</table>
@@ -67,7 +72,7 @@
 				</tr>
 
 			</table>
-			<input type="submit" value="Create" />
+			<input id="createProduct" type="submit" onclick="showAlert()" value="Create" />
 		</form>
 	</div>
 
@@ -104,7 +109,7 @@
 				%>
 				<tr>
 					<td>
-					<td><input type="button" value="Close Bid" onClick="show()" /></td>
+					<td><input id="closebtn" type="button" value="Close Bid" onClick="show()" /></td>
 					<td style="width:250px" id="winner"><%=maxBid%></td>
 				</tr>
 			</table>

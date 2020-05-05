@@ -32,6 +32,11 @@
 	}
 	}
  */
+ 
+ function showAlert(){
+		alert("Bid is created");
+		//windows.location.href = "sellerproducts.jsp";
+		}
 
 function validate()
  {
@@ -82,7 +87,7 @@ function validate()
 	<div class="vl"></div>
 	<table  id="prodtb" border="1">
 		<tr>
-			<td><%=prod%></td>
+			<td id="productname"><%=prod%></td>
 			<td><input id="adcart" type="button" value="Add to Cart"
 				onClick="showHideDiv('divMsg')" /></td>
 		</tr>
@@ -115,7 +120,7 @@ function validate()
 					<td><input type="text" name="address"></td>
 				</tr>
 			</table>
-			<input type="submit" value="Bid"  onclick="return validate()"/>
+			<input id="Bidid" type="submit" value="Bid"  onclick="return validate();showAlert()"/>
 
 		</form>
 

@@ -65,6 +65,7 @@ public class productServlet extends HttpServlet {
 		
 		try {
 			productsdao.createProduct(products);
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
