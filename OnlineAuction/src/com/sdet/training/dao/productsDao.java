@@ -91,8 +91,6 @@ public class productsDao {
 
 	public List<bidder> getbidders() {
 
-		
-
 		try {
 
 			String bidder_details = "select * from bid_details as b join products as p on b.product_id=p.pid where p.flag='Y';";
@@ -117,15 +115,17 @@ public class productsDao {
 				bid.setPhoneNumber(phone);
 				bid.setPid(rs.getString(7));
 				
-				details.add(bid);
-				
+				details.add(bid);	
 			
 		}
+			
 		}
+		
 			catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return details;
 
 	}
@@ -136,7 +136,7 @@ public class productsDao {
 
 			String Product_deactive = "update products set flag='N' where flag='Y' ;";
 			PreparedStatement preparedStatement = con.getConnection().prepareStatement(Product_deactive);
-			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement.executeQuery();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -154,10 +154,10 @@ public class productsDao {
 		String user="";
 	//	updateProductStatus();
 		    while(rs.next()) {
-			user = rs.getString(2)+"";
-			user+="- Amount: "+ rs.getString(3)+", ";
-			user+="-"+ rs.getString(4)+", ";
-			user+="-"+ rs.getString(5); 
+			user = " Name: "+rs.getString(2)+" - ";
+			user+=" Amount: "+ rs.getString(3)+" - ";
+			user+=" Email: "+ rs.getString(4)+" - ";
+			user+=" Phone Number: "+ rs.getString(5); 
 		    }
 		return user;
 	}

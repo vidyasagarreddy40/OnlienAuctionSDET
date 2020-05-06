@@ -28,6 +28,13 @@
 		alert("Product is created");
 		//windows.location.href = "sellerproducts.jsp";
 		}
+	
+	
+	function winner()
+	{
+	document.location.href("winner.jsp");
+	
+	}
 </script>
 <body>
 
@@ -94,7 +101,7 @@
 				<input type="hidden" name="name" value="<%=name%>" /> --%>
 				<%!int i;%>
 				<%
-					for (i = 0; i < 3; i++) {
+					for (i = 0; i < dao.getbidders().size(); i++) {
 				%>
 
 				<tr>
@@ -108,13 +115,26 @@
 					}
 				%>
 				<tr>
-					<td>
-					<td><input id="closebtn" type="button" value="Close Bid" onClick="show()" /></td>
-					<td style="width:250px" id="winner"><%=maxBid%></td>
+					
 				</tr>
 			</table>
 		</form>
 	</div>
+	
+	<div>
+	<form action="<%=request.getContextPath()%>/winnerServlet"
+			method="post">
+			
+			<table>
+			<tr>
+			<td><td><input id="closebtn" type="submit" value="Close Bid" onClick="winner()" /></td>
+					
+			</tr>
+			</table>
+			
+			</form>
+	</div>
+	
 	<script>
 	document.getElementById("winner").style.display = 'none';
 

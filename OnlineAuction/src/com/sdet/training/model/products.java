@@ -4,6 +4,13 @@ public class products {
 	
 	private String productName;
 	private String model;
+	private char flag;
+	public char getFlag() {
+		return flag;
+	}
+	public void setFlag(char flag) {
+		this.flag = flag;
+	}
 	public String getProductName() {
 		return productName;
 	}
