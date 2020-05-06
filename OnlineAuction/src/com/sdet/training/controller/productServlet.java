@@ -23,49 +23,55 @@ import com.sdet.training.util.sqlconnect;
 @WebServlet("/productServlet")
 public class productServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private productsDao productsdao = new productsDao();
-	
-	sqlconnect con=new sqlconnect();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public productServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	sqlconnect con = new sqlconnect();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public productServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String pname= productsdao.getProduct();
-		RequestDispatcher dispatcher= request.getRequestDispatcher("/WEB-INF/views/sellerproducts.jsp?pname="+pname);
+		String pname = productsdao.getProduct();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/sellerproducts.jsp?pname=" + pname);
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String productName= request.getParameter("productName");
-		String model= request.getParameter("model");
-		
-		products products= new products();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String productName = request.getParameter("productName");
+		String model = request.getParameter("model");
+
+		products products = new products();
 		products.setProductName(productName);
 		products.setModel(model);
-		
-		
+
 		try {
-			productsdao.createProduct(products);
-			
+			String product = productsdao.getProduct();// enabled products
+			if (product != null) {
+				
+			} else {
+				productsdao.createProduct(products);
+			}
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +79,7 @@ public class productServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+
 		response.sendRedirect("sellerproducts.jsp");
 	}
 

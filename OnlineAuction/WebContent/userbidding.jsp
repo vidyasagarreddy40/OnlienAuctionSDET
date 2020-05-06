@@ -22,41 +22,26 @@
 </style>
 
 <script type="text/javascript">
-
-
-/* function disabled(){
-	var prodName=prod;
-	if(prodName !=null){
-	document.getElementById("prodtb").disabled=false;
-	//document.getElementById("adcart").disabled=true;
-	}
-	}
- */
- 
- function showAlert(){
+	function showAlert() {
 		alert("Bid is created");
-		//windows.location.href = "sellerproducts.jsp";
+	}
+
+	function validate() {
+		var name = document.myform.userName.value;
+		if (name == "") {
+			alert("Please enter the Name");
+			document.myform.userName.foucs;
+			return false;
 		}
 
-function validate()
- {
-	 var name=document.myform.userName.value;
-	 if(name=="")
-		 {
-		 alert("Please enter the Name");
-		 document.myform.userName.foucs;
-		 return false;
-		 }
-	 
-	 var email=document.myform.email.value;
-	 if(email=="")
-		 {
-		 alert("Please enter the email");
-		 document.myform.email.foucs;
-		 return false;
-		 }
-	 
- }
+		var email = document.myform.email.value;
+		if (email == "") {
+			alert("Please enter the email");
+			document.myform.email.foucs;
+			return false;
+		}
+
+	}
 	function showHideDiv(ele) {
 		var srcElement = document.getElementById(ele);
 		if (srcElement != null) {
@@ -72,10 +57,6 @@ function validate()
 </head>
 <body onload="disabled()">
 
-
-	<table>
-		<form action="bidderServlet" method="get"></form>
-	</table>
 	<div align="right" style="background-color: #00CED1; color: #000000;">
 		<a href="login.jsp">back to Home Page</a>
 	</div>
@@ -85,7 +66,7 @@ function validate()
 		</tr>
 	</table> -->
 	<div class="vl"></div>
-	<table  id="prodtb" border="1">
+	<table id="prodtb" border="1">
 		<tr>
 			<td id="productname"><%=prod%></td>
 			<td><input id="adcart" type="button" value="Add to Cart"
@@ -94,8 +75,8 @@ function validate()
 	</table>
 	<div id="divMsg"
 		style="background-color: #006969; color: #ffffff; height: 185px; width: 250px; text-align: center; display: none">
-		<form name="myform" action="<%=request.getContextPath()%>/bidderServlet"
-			method="post">
+		<form name="myform"
+			action="<%=request.getContextPath()%>/bidderServlet" method="post">
 			<table border="1">
 				<tr>
 					<td>Name:</td>
@@ -120,7 +101,8 @@ function validate()
 					<td><input type="text" name="address"></td>
 				</tr>
 			</table>
-			<input id="Bidid" type="submit" value="Bid"  onclick="return validate();showAlert()"/>
+			<input id="Bidid" type="submit" value="Bid"
+				onclick="return validate();" />
 
 		</form>
 

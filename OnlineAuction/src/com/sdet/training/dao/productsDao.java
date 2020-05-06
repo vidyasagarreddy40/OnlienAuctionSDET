@@ -21,19 +21,14 @@ public class productsDao {
 
 	public int createProduct(products product) throws ClassNotFoundException, SQLException {
 
-		String url = "jdbc:sqlserver://127.0.0.1;databaseName=OnlineAutcion;";
-		String user = "sa";
-		String password = "Reddy@12345";
+		
 		String Insert_Products_SQL = "insert into products (product_name,model,flag) values(?,?,?);";
 
 		int result = 0;
 
-		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+		try {
 
-		try (Connection connection = DriverManager.getConnection(url, user, password);
-
-				PreparedStatement preparedStatement = connection.prepareStatement(Insert_Products_SQL)) {
-
+			PreparedStatement preparedStatement = con.getConnection().prepareStatement(Insert_Products_SQL);
 			preparedStatement.setString(1, product.getProductName());
 			preparedStatement.setString(2, product.getModel());
 			preparedStatement.setString(3, "Y");

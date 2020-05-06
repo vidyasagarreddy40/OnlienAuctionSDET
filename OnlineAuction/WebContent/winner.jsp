@@ -9,9 +9,9 @@
 </head>
 <body>
 	<%
-			productsDao dao=new productsDao();
-			String maxBid = dao.getMaxBid();
-		%>
+		productsDao dao = new productsDao();
+		String maxBid = dao.getMaxBid();
+	%>
 
 
 	<table border="1">
@@ -19,24 +19,24 @@
 		<tr>
 			<td style="width: 700px" id="winner"><%=maxBid%></td>
 		</tr>
-		
+
 		<tr></tr>
 		<tr>
-		<td>
-		<div>
-	<form action="<%=request.getContextPath()%>/winnerServlet"
-			method="post">
-			
-			<table>
-			<tr>
-			<td><td><input id="closebtn" type="submit" value="Close Bid"/></td>
-					
-			</tr>
-			</table>
-			
-			</form>
-	</div>
-		
+			<td>
+				<div>
+					<form action="<%=request.getContextPath()%>/winnerServlet"
+						method="post">
+
+						<table>
+							<tr>
+								<td>
+								<td><input id="closebtn" type="submit" value="Close Bid" /></td>
+
+							</tr>
+						</table>
+
+					</form>
+				</div>
 	</table>
 
 

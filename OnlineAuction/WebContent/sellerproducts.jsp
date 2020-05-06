@@ -10,8 +10,6 @@
 </head>
 
 <script type="text/javascript">
-	
-
 	function showHideDiv(ele) {
 		var srcElement = document.getElementById(ele);
 		if (srcElement != null) {
@@ -23,17 +21,14 @@
 			return false;
 		}
 	}
-	
-	function showAlert(){
-			
-		alert("Product is created");
-		}
-	
-	
-	function winner()
-	{
-	document.location.href("winner.jsp");
-	
+
+	function showAlert() {
+
+	//	alert("Product is created");
+	}
+
+	function winner() {
+		document.location.href("winner.jsp");
 	}
 </script>
 <body>
@@ -45,7 +40,7 @@
 	<div>
 
 		<%
-			productsDao dao= new productsDao();
+			productsDao dao = new productsDao();
 			String prod = dao.getProduct();
 			String maxBid = dao.getMaxBid();
 		%>
@@ -79,7 +74,8 @@
 				</tr>
 
 			</table>
-			<input id="createProduct" type="submit" onclick="showAlert()" value="Create" />
+			<input id="createProduct" type="submit" onclick="showAlert()"
+				value="Create" />
 		</form>
 	</div>
 
@@ -115,21 +111,23 @@
 					}
 				%>
 				<tr>
-					<td><td><input id="closebtn" type="button" value="Check the Winner" onClick="winner()" /></td>
+					<td>
+					<td><input id="closebtn" type="button"
+						value="Check the Winner" onClick="winner()" /></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	
-	
-	
-	<script>
-	document.getElementById("winner").style.display = 'none';
 
-	function show() {
-		console.log("in show func");
-		document.getElementById("winner").style.display = 'block';
-	}
+
+
+	<script>
+		document.getElementById("winner").style.display = 'none';
+
+		function show() {
+			console.log("in show func");
+			document.getElementById("winner").style.display = 'block';
+		}
 	</script>
 </body>
 </html>
