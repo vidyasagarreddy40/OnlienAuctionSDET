@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Winner !</title>
 </head>
 <body>
 	<%
@@ -17,9 +17,26 @@
 	<table border="1">
 
 		<tr>
-			
 			<td style="width: 700px" id="winner"><%=maxBid%></td>
 		</tr>
+		
+		<tr></tr>
+		<tr>
+		<td>
+		<div>
+	<form action="<%=request.getContextPath()%>/winnerServlet"
+			method="post">
+			
+			<table>
+			<tr>
+			<td><td><input id="closebtn" type="submit" value="Close Bid"/></td>
+					
+			</tr>
+			</table>
+			
+			</form>
+	</div>
+		
 	</table>
 
 

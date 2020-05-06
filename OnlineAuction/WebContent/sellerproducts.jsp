@@ -25,8 +25,8 @@
 	}
 	
 	function showAlert(){
+			
 		alert("Product is created");
-		//windows.location.href = "sellerproducts.jsp";
 		}
 	
 	
@@ -115,25 +115,13 @@
 					}
 				%>
 				<tr>
-					
+					<td><td><input id="closebtn" type="button" value="Check the Winner" onClick="winner()" /></td>
 				</tr>
 			</table>
 		</form>
 	</div>
 	
-	<div>
-	<form action="<%=request.getContextPath()%>/winnerServlet"
-			method="post">
-			
-			<table>
-			<tr>
-			<td><td><input id="closebtn" type="submit" value="Close Bid" onClick="winner()" /></td>
-					
-			</tr>
-			</table>
-			
-			</form>
-	</div>
+	
 	
 	<script>
 	document.getElementById("winner").style.display = 'none';

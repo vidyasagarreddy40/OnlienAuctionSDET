@@ -73,6 +73,8 @@ public class bidderServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		response.sendRedirect("userbidding.jsp");
 	}
 
 }

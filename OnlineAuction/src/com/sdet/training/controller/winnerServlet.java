@@ -40,7 +40,14 @@ public class winnerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		productsdao.updateProductStatus();
+		try {
+			productsdao.updateProductStatus();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("winner.jsp");
 	}
 
 }

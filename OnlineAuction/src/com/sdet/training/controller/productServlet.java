@@ -73,9 +73,8 @@ public class productServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		//response.sendRedirect("");
+				
+		response.sendRedirect("sellerproducts.jsp");
 	}
 
 }

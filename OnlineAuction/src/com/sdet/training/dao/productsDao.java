@@ -17,7 +17,7 @@ public class productsDao {
 	
 	
 	sqlconnect con = new sqlconnect();
-	ArrayList<bidder> details = new ArrayList<>();
+	
 
 	public int createProduct(products product) throws ClassNotFoundException, SQLException {
 
@@ -41,6 +41,9 @@ public class productsDao {
 			result = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			con.getConnection().close();
 		}
 
 		return result;
@@ -86,11 +89,14 @@ public class productsDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return pname;
 	}
 
-	public List<bidder> getbidders() {
+	public List<bidder> getbidders() throws SQLException {
 
+		ArrayList<bidder> details = new ArrayList<>();
+		
 		try {
 
 			String bidder_details = "select * from bid_details as b join products as p on b.product_id=p.pid where p.flag='Y';";
@@ -125,33 +131,40 @@ public class productsDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		finally {
+			con.getConnection().close();
+		}
 		return details;
 
 	}
 
-	public void updateProductStatus() {
+	public void updateProductStatus() throws SQLException {
 
 		try {
 
 			String Product_deactive = "update products set flag='N' where flag='Y' ;";
 			PreparedStatement preparedStatement = con.getConnection().prepareStatement(Product_deactive);
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		}
+		finally {
+			con.getConnection().close();
 		}
 	}
 	
 	public String getMaxBid() throws SQLException
 	{
-		
+		String user="";
+		try {
 		String highest_bid="select * from bid_details where amount=(select max(amount) from bid_details b join products p on b.product_id=p.pid where p.flag='y');";
+		
 		
 		PreparedStatement preparedStatement = con.getConnection().prepareStatement(highest_bid);
 		ResultSet rs = preparedStatement.executeQuery();
-		String user="";
+
 	//	updateProductStatus();
 		    while(rs.next()) {
 			user = " Name: "+rs.getString(2)+" - ";
@@ -159,6 +172,13 @@ public class productsDao {
 			user+=" Email: "+ rs.getString(4)+" - ";
 			user+=" Phone Number: "+ rs.getString(5); 
 		    }
+		}
+		catch(SQLException e){
+			
+		}
+		finally {
+			con.getConnection().close();
+		}
 		return user;
 	}
 
